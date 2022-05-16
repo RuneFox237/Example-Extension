@@ -1,0 +1,78 @@
+﻿<#@ template language="C#" linePragmas="false" #>
+<#@ import namespace="UnityEngine" #>
+<#@ import namespace="RoRSkinBuilder" #>
+using UnityEngine;
+using System;
+using RoR2;
+using MonoMod.RuntimeDetour;
+using ExampleNameSpace.ExampleExtension;
+
+
+namespace <#= info.assetInfo.uccModName #>
+{
+  public partial class <#= info.assetInfo.uccModName #>Plugin 
+  { 
+    static ExampleExtension _ExampleExtension = new ExampleExtension();
+    static ExampleManager _ExampleManager = new ExampleManager();
+
+    public class ExampleExtension
+    {
+      //////////////////////////////////////////////////////////////////////////////////////////
+      /// Extension functions
+      
+      internal void BeforeStart()
+      {
+        _ExampleManager.InstanceLogger = Instance.Logger;
+        new Hook(typeof(SkinDef).GetMethod(nameof(SkinDef.Apply)), (Action<Action<SkinDef, GameObject>, SkinDef, GameObject>)_ExampleManager.SkinDefApply).Apply();
+      }
+
+      internal void AfterStart()
+      {
+        ExampleFunction();
+      }
+
+      internal void BeforeCatalogInit(){}
+
+      internal void AfterCatalogInit(){}
+
+      /// Extension functions
+      //////////////////////////////////////////////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////////////////////////////////////////////
+      /// Local Declerations
+      
+<#
+for(int i = 0; i < info.ExampleNumber; i++)
+{
+#>
+      int local_<#= i #> = <#= i #>;
+<#
+}
+#>
+      /// Local Declerations
+      //////////////////////////////////////////////////////////////////////////////////////////
+      
+      //////////////////////////////////////////////////////////////////////////////////////////
+      /// Local funcitons
+
+      void ExampleFunction()
+      {
+<#
+for(int i = 0; i < info.ExampleNumber; i++)
+{
+#>
+        _ExampleManager.PrintNumber(local_<#= i #>);
+<#
+}
+#>
+      }
+
+      /// Local funcitons
+      //////////////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+
+  }
+}

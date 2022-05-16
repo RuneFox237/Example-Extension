@@ -1,0 +1,19 @@
+{
+    "name": "exampleextension.asmdef",
+    "references": [
+        "GUID:420d696f3c2739f4697e78d61fd43b2e",
+        "GUID:b95240a7a70e9d443af96a4bc75dd4b0",
+        "GUID:5fbaff2cd1132304fb7219d54ea825a1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_EDITOR"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

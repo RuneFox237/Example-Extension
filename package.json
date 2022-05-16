@@ -1,0 +1,9 @@
+{
+  "name": "com.exampleauthor.examplename",
+  "version": "1.0.0",
+  "displayName": "RoR Example Extension",
+  "description": "Example Extension for how to build extensions for RoR Skinbuilder Extesion",
+  "unity": "2019.4",
+  "release": "26f1",
+  "hideInEditor": false
+}
